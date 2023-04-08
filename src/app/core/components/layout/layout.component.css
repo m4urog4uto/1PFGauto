@@ -1,0 +1,16 @@
+:host {
+    width: 100%;
+}
+
+.app-layout-container {
+    width: 100%;
+    height: calc(100vh - 56px);
+    overflow-y: scroll;
+}
+
+section {
+    display: flex;
+    padding: 30px;
+    justify-content: space-between;
+    max-width: 1200px;
+}
