@@ -5,12 +5,16 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { MaterialModule } from './material/material.module';
 import { StudentFormComponent } from './components/student-form/student-form.component';
+import { TableComponent } from './components/table/table.component';
+import { ModalComponent } from './components/modal/modal.component';
 
 @NgModule({
   declarations: [
     NavbarComponent,
     ToolbarComponent,
-    StudentFormComponent
+    StudentFormComponent,
+    TableComponent,
+    ModalComponent
   ],
   imports: [
     CommonModule,
@@ -19,7 +23,8 @@ import { StudentFormComponent } from './components/student-form/student-form.com
   exports: [
     NavbarComponent,
     ToolbarComponent,
-    StudentFormComponent
+    StudentFormComponent,
+    TableComponent
   ]
 })
 
