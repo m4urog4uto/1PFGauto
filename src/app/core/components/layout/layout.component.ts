@@ -16,11 +16,30 @@ export class LayoutComponent {
   alumnos: Alumno[] = [
     {
       id: 1,
-      nombre: 'Perez',
-      apellido: 'Gonzales',
-      dni: '42132321',
-      anioDeCursada: '5to',
-      debeMaterias: 'si'
+      name: 'Mauro',
+      surname: 'Gauto',
+      dni: '42175350',
+      email: 'mauro.gauto@gmail.com',
+      phone: '1122334455',
+      courseSelected: 'JavaScript'
+    },
+    {
+      id: 2,
+      name: 'Aquiles',
+      surname: 'Tendon',
+      dni: '42134432',
+      email: 'aquiles.tendon@gmail.com',
+      phone: '1122334456',
+      courseSelected: 'Java'
+    },
+    {
+      id: 3,
+      name: 'Rogelia',
+      surname: 'Buendia',
+      dni: '42134432',
+      email: 'Rogelia.Buendia@gmail.com',
+      phone: '1122334470',
+      courseSelected: 'My SQL'
     }
   ];
 
@@ -28,11 +47,12 @@ export class LayoutComponent {
     const dialogo = this.dialogService.open(ModalComponent, {
       data: {
         alumno: {
-          nombre: '',
-          apellido: '',
+          name: '',
+          surname: '',
           dni: '',
-          anioDeCursada: '',
-          debeMaterias: ''
+          email: '',
+          phone: '',
+          courseSelected: ''
         }
       }
     });
@@ -45,8 +65,8 @@ export class LayoutComponent {
     });
   }
 
-  removeStudent(ev: string): void {
-    const studentId = this.alumnos.findIndex((obj) => obj.dni === ev);
+  removeStudent(ev: number): void {
+    const studentId = this.alumnos.findIndex((obj) => obj.id === ev);
     if (studentId > -1) {
       this.alumnos.splice(studentId, 1);
     };
@@ -54,19 +74,20 @@ export class LayoutComponent {
     this.alumnos = [ ...this.alumnos ];
   }
 
-  editStudent(ev: string): void {
-    const studentId = this.alumnos.find((obj) => obj.dni === ev);
+  editStudent(ev: number): void {
+    const studentId = this.alumnos.find((obj) => obj.id === ev);
     if (studentId) {
-      const { id, nombre, apellido, dni, anioDeCursada, debeMaterias } = studentId;
+      const { id, name, surname, dni, email, phone, courseSelected } = studentId;
       const dialogo = this.dialogService.open(ModalComponent, {
         data: {
           alumno: {
             id,
-            nombre,
-            apellido,
+            name,
+            surname,
             dni,
-            anioDeCursada,
-            debeMaterias
+            email,
+            phone,
+            courseSelected
           }
         }
       });

@@ -4,34 +4,39 @@
       <td mat-cell *matCellDef="let usuario"> {{usuario.dni}} </td>
     </ng-container>
   
-    <ng-container matColumnDef="nombreCompleto">
+    <ng-container matColumnDef="fullName">
       <th mat-header-cell *matHeaderCellDef>Nombre completo</th>
       <td mat-cell *matCellDef="let usuario">
         {{usuario | fullName }}
       </td>
     </ng-container>
 
-    <ng-container matColumnDef="anioDeCursada">
-      <th mat-header-cell *matHeaderCellDef>Año de Cursada</th>
-      <td mat-cell *matCellDef="let usuario"> {{usuario.anioDeCursada}} </td>
+    <ng-container matColumnDef="email">
+      <th mat-header-cell *matHeaderCellDef>Email</th>
+      <td mat-cell *matCellDef="let usuario"> {{usuario.email}} </td>
     </ng-container>
 
-    <ng-container matColumnDef="debeMaterias">
-      <th mat-header-cell *matHeaderCellDef>Debe Materias</th>
-      <td mat-cell *matCellDef="let usuario"> {{usuario.debeMaterias === 'si' ? 'Debe materias' : 'No debe materias'}} </td>
+    <ng-container matColumnDef="phone">
+      <th mat-header-cell *matHeaderCellDef>Teléfono</th>
+      <td mat-cell *matCellDef="let usuario"> {{usuario.phone}} </td>
     </ng-container>
 
-    <ng-container matColumnDef="acciones">
+    <ng-container matColumnDef="courseSelected">
+      <th mat-header-cell *matHeaderCellDef>Curso Seleccionado</th>
+      <td mat-cell *matCellDef="let usuario"> {{usuario.courseSelected}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
       <th mat-header-cell *matHeaderCellDef>Acciones</th>
       <td mat-cell *matCellDef="let usuario">
         <button
           color="accent"
           mat-raised-button
-          (click)="editarAlumno(usuario.dni)">Editar</button>
+          (click)="editarAlumno(usuario.id)">Editar</button>
         <button
           color="warn"
           mat-raised-button
-          (click)="eliminarAlumno(usuario.dni)">Eliminar</button>
+          (click)="eliminarAlumno(usuario.id)">Eliminar</button>
       </td>
     </ng-container>
   

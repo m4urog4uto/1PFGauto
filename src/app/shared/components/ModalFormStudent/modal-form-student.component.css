@@ -6,3 +6,16 @@
     display: flex;
     flex-direction: column;
 }
+
+.form-section {
+    display: flex;
+}
+
+.col {
+    display: flex;
+    flex-direction: column;
+}
+
+.col:first-of-type {
+    margin-right: 33px;
+}

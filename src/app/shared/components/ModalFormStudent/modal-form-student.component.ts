@@ -7,6 +7,11 @@ interface DialogData {
   alumno: Alumno;
 }
 
+interface Courses {
+  value: string;
+  viewValue: string;
+}
+
 @Component({
   selector: 'app-modal',
   templateUrl: './modal-form-student.component.html',
@@ -15,32 +20,47 @@ interface DialogData {
 export class ModalComponent {
 
   studentForm: FormGroup;
-  nombreCtrl: FormControl<string | null>;
-  apellidoCtrl: FormControl<string | null>;
+
+  nameCtrl: FormControl<string | null>;
+  surnameCtrl: FormControl<string | null>;
   dniCtrl: FormControl<string | null>;
-  anioDeCursadaCtrl: FormControl<string | null>;
-  debeMateriasCtrl: FormControl<string | null>;
+  emailCtrl: FormControl<string | null>;
+  phoneCtrl: FormControl<string | null>;
+  courseSelectedCtrl: FormControl<string | null>;
+
+  courses: Courses[] = [
+    {value: 'Angular', viewValue: 'Angular'},
+    {value: 'Fullstack MERN', viewValue: 'Fullstack MERN'},
+    {value: 'Fullstack MEAN', viewValue: 'Fullstack MEAN'},
+    {value: 'JavaScript', viewValue: 'JavaScript'},
+    {value: 'Java', viewValue: 'Java'},
+    {value: 'My SQL', viewValue: 'My SQL'},
+    {value: 'Node JS', viewValue: 'Node JS'},
+    {value: 'React JS', viewValue: 'React JS'},
+  ];
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: DialogData,
     private dialogRef: MatDialogRef<ModalComponent>,
     public formBuilder: FormBuilder
   ) {
-    const { id, dni, nombre, apellido, anioDeCursada, debeMaterias } = data.alumno;
+    const { id, dni, name, surname, email, phone, courseSelected } = data.alumno;
     
-    this.nombreCtrl = new FormControl(nombre, [ Validators.required ]);
-    this.apellidoCtrl = new FormControl(apellido, [ Validators.required ]);
+    this.nameCtrl = new FormControl(name, [ Validators.required ]);
+    this.surnameCtrl = new FormControl(surname, [ Validators.required ]);
     this.dniCtrl = new FormControl(dni, [ Validators.required ]);
-    this.anioDeCursadaCtrl = new FormControl(anioDeCursada, [ Validators.required ]);
-    this.debeMateriasCtrl = new FormControl(debeMaterias, [ Validators.required ]);
+    this.emailCtrl = new FormControl(email, [ Validators.required, Validators.email ]);
+    this.phoneCtrl = new FormControl(phone, [ Validators.required ]);
+    this.courseSelectedCtrl = new FormControl(courseSelected, [ Validators.required ]);
 
     this.studentForm = this.formBuilder.group({
       id: new FormControl(id, []), 
       dni: this.dniCtrl,
-      nombre: this.nombreCtrl,
-      apellido: this.apellidoCtrl,
-      anioDeCursada: this.anioDeCursadaCtrl,
-      debeMaterias: this.debeMateriasCtrl,
+      name: this.nameCtrl,
+      surname: this.surnameCtrl,
+      email: this.emailCtrl,
+      phone: this.phoneCtrl,
+      courseSelected: this.courseSelectedCtrl,
     });
   }
 

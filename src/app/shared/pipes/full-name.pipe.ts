@@ -7,7 +7,7 @@ import { Alumno } from '../components/table/table.component';
 export class FullNamePipe implements PipeTransform {
 
   transform(value: Alumno, ...args: unknown[]): unknown {
-    return `${value.nombre} ${value.apellido}`;
+    return `${value.name} ${value.surname}`;
   }
 
 }

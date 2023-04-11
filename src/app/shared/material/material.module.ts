@@ -10,6 +10,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatRadioModule } from '@angular/material/radio';
+import { MatSelectModule } from '@angular/material/select';
 
 const materialModules = [
   CommonModule,
@@ -22,6 +23,7 @@ const materialModules = [
   MatInputModule,
   MatDialogModule,
   MatRadioModule,
+  MatSelectModule
 ];
 
 @NgModule({
