@@ -13,35 +13,7 @@ export class LayoutComponent {
     private dialogService: MatDialog
   ) {}
 
-  alumnos: Alumno[] = [
-    {
-      id: 1,
-      name: 'Mauro',
-      surname: 'Gauto',
-      dni: '42175350',
-      email: 'mauro.gauto@gmail.com',
-      phone: '1122334455',
-      courseSelected: 'JavaScript'
-    },
-    {
-      id: 2,
-      name: 'Aquiles',
-      surname: 'Tendon',
-      dni: '42134432',
-      email: 'aquiles.tendon@gmail.com',
-      phone: '1122334456',
-      courseSelected: 'Java'
-    },
-    {
-      id: 3,
-      name: 'Rogelia',
-      surname: 'Buendia',
-      dni: '42134432',
-      email: 'Rogelia.Buendia@gmail.com',
-      phone: '1122334470',
-      courseSelected: 'My SQL'
-    }
-  ];
+  alumnos: Alumno[] = [];
 
   addStudentForm(): void {
     const dialogo = this.dialogService.open(ModalComponent, {
