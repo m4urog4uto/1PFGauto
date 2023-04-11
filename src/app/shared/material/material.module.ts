@@ -9,6 +9,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatRadioModule } from '@angular/material/radio';
 
 const materialModules = [
   CommonModule,
@@ -19,7 +20,8 @@ const materialModules = [
   MatTableModule,
   MatFormFieldModule,
   MatInputModule,
-  MatDialogModule
+  MatDialogModule,
+  MatRadioModule,
 ];
 
 @NgModule({

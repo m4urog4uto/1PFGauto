@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Input, OnInit, OnChanges, SimpleChanges, Output, EventEmitter } from '@angular/core';
 
-import { MatTableDataSource } from '@angular/material/table';
+import { MatTableDataSource, MatTableDataSourcePaginator } from '@angular/material/table';
 
 export interface Alumno {
   id: number;
@@ -8,7 +8,7 @@ export interface Alumno {
   apellido: string;
   dni: string;
   anioDeCursada: string;
-  debeMaterias: boolean;
+  debeMaterias: string;
 }
 
 @Component({
@@ -16,10 +16,46 @@ export interface Alumno {
   templateUrl: './table.component.html',
   styleUrls: ['./table.component.css']
 })
-export class TableComponent {
-  alumnos: Alumno[] = [];
+export class TableComponent implements OnInit, OnChanges {
 
-  dataSource = new MatTableDataSource(this.alumnos);
+  @Input()
+  items: Alumno[] = [
+    {
+      id: 1,
+      nombre: 'Perez',
+      apellido: 'Gonzales',
+      dni: '42132321',
+      anioDeCursada: '5to',
+      debeMaterias: 'si'
+    }
+  ];
 
-  displayedColumns: string[] = ['dni', 'nombreCompleto', 'anioDeCursada', 'debeMaterias'];
+  @Output()
+  editStudent = new EventEmitter<string>();
+
+  @Output()
+  removeStudent = new EventEmitter<string>();
+
+  dataSource = new MatTableDataSource(this.items);
+
+  displayedColumns: string[] = ['dni', 'nombreCompleto', 'anioDeCursada', 'debeMaterias', 'acciones'];
+
+  constructor() {}
+
+  ngOnInit(): void {
+    
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    this.dataSource = new MatTableDataSource(this.items);
+    console.log(changes);
+  }
+
+  editarAlumno(id: string): void {
+    this.editStudent.emit(id);
+  }
+  
+  eliminarAlumno(id: string): void {
+    this.removeStudent.emit(id);
+  }
 }

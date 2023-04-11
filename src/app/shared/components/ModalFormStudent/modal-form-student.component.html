@@ -1,0 +1,84 @@
+<div class="container">
+  <h1 [appFontSize]="20" mat-dialog-title>Añadir Alumno</h1>
+  <form
+    (ngSubmit)="onSubmit()"
+    [formGroup]="studentForm"
+    autocomplete="off"
+    class="form-container"
+  >
+    <mat-form-field appearance="outline">
+      <mat-label>Nombre</mat-label>
+      <input
+        [formControl]="nombreCtrl"
+        matInput
+        placeholder="Nombre"
+      >
+
+      <mat-error *ngFor="let error of nombreCtrl.errors | keyvalue">
+        {{ error | controlErrorMessages }}
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Apellido</mat-label>
+      <input
+        [formControl]="apellidoCtrl"
+        matInput
+        placeholder="Apellido"
+      >
+
+      <mat-error *ngFor="let error of apellidoCtrl.errors | keyvalue">
+        {{ error | controlErrorMessages }}
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>DNI</mat-label>
+      <input
+        [formControl]="dniCtrl"
+        matInput
+        placeholder="DNI"
+      >
+
+      <mat-error *ngFor="let error of dniCtrl.errors | keyvalue">
+        {{ error | controlErrorMessages }}
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Año de cursada</mat-label>
+      <input
+        [formControl]="anioDeCursadaCtrl"
+        matInput
+        placeholder="Año de cursada"
+      >
+
+      <mat-error *ngFor="let error of anioDeCursadaCtrl.errors | keyvalue">
+        {{ error | controlErrorMessages }}
+      </mat-error>
+    </mat-form-field>
+
+    <mat-radio-group [formControl]="debeMateriasCtrl" aria-label="Debe materias">
+      <mat-label>¿Debe Materias?</mat-label>
+      <mat-radio-button value="si">Si</mat-radio-button>
+      <mat-radio-button value="no">No</mat-radio-button>
+
+      <mat-error *ngFor="let error of debeMateriasCtrl.errors | keyvalue">
+        {{ error | controlErrorMessages }}
+      </mat-error>
+    </mat-radio-group>
+
+    <div mat-dialog-actions>
+      <button
+        mat-button
+        (click)="onClose()"
+      >Cancelar</button>
+      <button
+        mat-button
+        [mat-dialog-close]="1"
+        type="submit"
+        [disabled]="this.studentForm.invalid"
+      > Guardar </button>
+    </div>
+  </form>
+</div>

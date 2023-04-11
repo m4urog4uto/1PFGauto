@@ -1,5 +1,9 @@
-<div class="app-layout-container container">
-  <button color="primary" mat-raised-button>Añadir Alumno</button>
+<div class="app-layout-container">
+  <button class="btn-add" color="primary" mat-raised-button (click)="addStudentForm()">Añadir Alumno</button>
 
-  <app-table></app-table>
+  <app-table
+    [items]="alumnos"
+    (removeStudent)="removeStudent($event)"
+    (editStudent)="editStudent($event)"
+  ></app-table>
 </div>

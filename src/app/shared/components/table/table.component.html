@@ -7,7 +7,7 @@
     <ng-container matColumnDef="nombreCompleto">
       <th mat-header-cell *matHeaderCellDef>Nombre completo</th>
       <td mat-cell *matCellDef="let usuario">
-        {{usuario}}
+        {{usuario | fullName }}
       </td>
     </ng-container>
 
@@ -18,7 +18,21 @@
 
     <ng-container matColumnDef="debeMaterias">
       <th mat-header-cell *matHeaderCellDef>Debe Materias</th>
-      <td mat-cell *matCellDef="let usuario"> {{usuario.debeMaterias}} </td>
+      <td mat-cell *matCellDef="let usuario"> {{usuario.debeMaterias === 'si' ? 'Debe materias' : 'No debe materias'}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="acciones">
+      <th mat-header-cell *matHeaderCellDef>Acciones</th>
+      <td mat-cell *matCellDef="let usuario">
+        <button
+          color="accent"
+          mat-raised-button
+          (click)="editarAlumno(usuario.dni)">Editar</button>
+        <button
+          color="warn"
+          mat-raised-button
+          (click)="eliminarAlumno(usuario.dni)">Eliminar</button>
+      </td>
     </ng-container>
   
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

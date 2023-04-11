@@ -3,14 +3,9 @@
 }
 
 .app-layout-container {
-    width: 100%;
-    height: calc(100vh - 56px);
-    overflow-y: scroll;
+    margin: 30px;
 }
 
-section {
-    display: flex;
-    padding: 30px;
-    justify-content: space-between;
-    max-width: 1200px;
+.btn-add {
+    margin-bottom: 20px;
 }
